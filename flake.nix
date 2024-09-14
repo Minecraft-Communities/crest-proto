@@ -27,17 +27,12 @@
             rustfmt
 
             gcc13
-            glibc.dev
             netsurf.libparserutils
             netsurf.libwapcaplet
             netsurf.libcss
-
           ];
 
           LIBCLANG_PATH =           "${pkgs.clang.passthru.cc.lib}/lib";
-          CLANG_STD_INCLUDE_PATH =  "${pkgs.clang.passthru.cc.dev}/include";
-          LIBGCC_PATH =             "${pkgs.gcc13}";
-          GLIBC_INCLUDE =           "${pkgs.glibc.dev}/include";
           RUST_SRC_PATH =           rustPlatform.rustLibSrc;
         };
       }
