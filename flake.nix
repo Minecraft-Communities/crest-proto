@@ -16,34 +16,28 @@
           ];
 
           buildInputs = [
+            clang
+            pkg-config
+            pre-commit
+
             cargo
             rustc
             rustfmt
-            pre-commit
-            pkg-config
 
-            gobject-introspection
-            atkmm
-            pango
-            gtk3-x11
+            libclang.lib
 
-            gcc
+            netsurf.libparserutils
+            netsurf.libwapcaplet
             netsurf.libcss
+
           ];
-          LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${
-            lib.makeLibraryPath [
-              xorg.libX11
-              xorg.libXcursor
-              xorg.libXi
-              libxkbcommon
-              xorg.libxcb
-              vulkan-loader
 
-              netsurf.libcss
-            ]
-          }";
-
+          LIBCLANG_PATH = "${pkgs.libclang.lib}/lib";
           RUST_SRC_PATH = rustPlatform.rustLibSrc;
+
+          NS_LIBPARSERUTILS = "${pkgs.netsurf.libparserutils}";
+          NS_LIBWAPCAPLET = "${pkgs.netsurf.libwapcaplet}";
+          NS_LIBCSS = "${pkgs.netsurf.libcss}";
         };
       }
     );

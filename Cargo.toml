@@ -3,5 +3,9 @@ name = "crest-proto"
 version = "0.1.0"
 edition = "2021"
 
+[build-dependencies]
+bindgen = "0.70.1"
+
 [dependencies]
 derive_more = { version = "1.0.0", features = [ "from" ] }
+libc = "0.2.158"
