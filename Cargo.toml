@@ -8,4 +8,4 @@ bindgen = "0.70.1"
 
 [dependencies]
 derive_more = { version = "1.0.0", features = [ "from" ] }
-libc = "0.2.158"
+# libc = "0.2.158"

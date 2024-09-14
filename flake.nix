@@ -16,7 +16,7 @@
           ];
 
           buildInputs = [
-            clang
+            libclang.lib
             pkg-config
             pre-commit
 
@@ -24,8 +24,7 @@
             rustc
             rustfmt
 
-            libclang.lib
-
+            libgcc
             netsurf.libparserutils
             netsurf.libwapcaplet
             netsurf.libcss
