@@ -8,22 +8,11 @@ fn main() {
     println!("cargo:rustc-link-lib=css");                   // tell cargo to add the css lib
     println!("cargo:rerun-if-changed=libcss-wrapper.h");    // tell cargo to rebuild if libcss-wrapper.h changes
 
-
-    let libparserutils_dir = env::var("NS_LIBPARSERUTILS").expect("Required environment variable 'NS_LIBPARSERUTILS' not set!");
-    let libwapcaplet_dir = env::var("NS_LIBWAPCAPLET").expect("Required environment variable 'NS_LIBWAPCAPLET' not set!");
-    let libcss_dir = env::var("NS_LIBCSS").expect("Required environment variable 'NS_LIBCSS' not set!");
-
-    let libparserutils_dir_include = format!("{libparserutils_dir}/include");
-    let libwapcaplet_dir_include = format!("{libwapcaplet_dir}/include");
-    let libcss_dir_include = format!("{libcss_dir}/include");
+    let nix_cflags_compile = env::var("NIX_CFLAGS_COMPILE").unwrap_or_default();
 
     let bindings = bindgen::Builder::default()
         .header("libcss-wrapper.h")
-
-        .clang_arg(format!("-I{}", libparserutils_dir_include))
-        .clang_arg(format!("-I{}", libwapcaplet_dir_include))
-        .clang_arg(format!("-I{}", libcss_dir_include))
-
+        .clang_args(nix_cflags_compile.split_whitespace())
         .generate()
         .expect("Unable to generate bindings!")
         ;

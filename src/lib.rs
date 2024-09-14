@@ -1,2 +1,4 @@
 
-pub mod ffi;
+mod ffi;
+
+pub use ffi::*;

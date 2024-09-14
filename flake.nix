@@ -13,10 +13,12 @@
         devShell = with pkgs; mkShell {
           packages = with pkgs; [
             tree
+            clang
+            gcc13
           ];
 
           buildInputs = [
-            libclang.lib
+            clang
             pkg-config
             pre-commit
 
@@ -24,19 +26,19 @@
             rustc
             rustfmt
 
-            libgcc
+            gcc13
+            glibc.dev
             netsurf.libparserutils
             netsurf.libwapcaplet
             netsurf.libcss
 
           ];
 
-          LIBCLANG_PATH = "${pkgs.libclang.lib}/lib";
-          RUST_SRC_PATH = rustPlatform.rustLibSrc;
-
-          NS_LIBPARSERUTILS = "${pkgs.netsurf.libparserutils}";
-          NS_LIBWAPCAPLET = "${pkgs.netsurf.libwapcaplet}";
-          NS_LIBCSS = "${pkgs.netsurf.libcss}";
+          LIBCLANG_PATH =           "${pkgs.clang.passthru.cc.lib}/lib";
+          CLANG_STD_INCLUDE_PATH =  "${pkgs.clang.passthru.cc.dev}/include";
+          LIBGCC_PATH =             "${pkgs.gcc13}";
+          GLIBC_INCLUDE =           "${pkgs.glibc.dev}/include";
+          RUST_SRC_PATH =           rustPlatform.rustLibSrc;
         };
       }
     );
