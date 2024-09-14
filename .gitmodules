@@ -1,3 +1,0 @@
-[submodule "lib/libcss"]
-	path = lib/libcss
-	url = https://github.com/netsurf-browser/libcss

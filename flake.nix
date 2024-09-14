@@ -27,8 +27,8 @@
             pango
             gtk3-x11
 
-            netsurf.libparserutils
-            netsurf.libwapcaplet
+            gcc
+            netsurf.libcss
           ];
           LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${
             lib.makeLibraryPath [
@@ -38,6 +38,8 @@
               libxkbcommon
               xorg.libxcb
               vulkan-loader
+
+              netsurf.libcss
             ]
           }";
 
