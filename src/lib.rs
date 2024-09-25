@@ -1,4 +1,7 @@
+#![allow(improper_ctypes)]
+#![allow(dead_code)]
 
-mod ffi;
+pub mod error;
+mod native;
 
-pub use ffi::*;
+pub use native::*;

@@ -7,5 +7,6 @@ edition = "2021"
 bindgen = "0.70.1"
 
 [dependencies]
+bitmask-enum = "2.2.4"
 derive_more = { version = "1.0.0", features = [ "from" ] }
 # libc = "0.2.158"

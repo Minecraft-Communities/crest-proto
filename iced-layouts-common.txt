@@ -1,0 +1,58 @@
+
+# enums
+Gradient(
+    Linear{ Radians, [ColorStop; 8] },
+)
+HandleShape(
+    Circle{ f32 },
+    Rectangle{ u16, Radius }
+)
+
+# types
+Border          -> { Color, Width, Radius }
+Color           -> [ f32; 4 ]
+ColorStop       -> { Offset, Color }
+Handle          -> { HandleShape, Background, Width, Color }
+Offset          -> f32
+Radians         -> f32
+Radius          -> { f32, f32, f32, f32 }
+Rail            -> { [Background; 2], Width, Border }
+Shadow          -> { Color, Vector, f32 }
+Vector          -> { Any, Any }
+Width           -> f32
+
+# attributes
+background-color : Color | Gradient
+text-color       : Color
+border           : Border
+shadow           : Shadow
+icon             : Color
+value            : Color
+selection        : Color
+rail             : Rail
+handle           : Handle
+dot-color        : Color
+border-width     : Width
+border-color     : Color
+
+placeholder      : Any
+
+# widget styles
+button       { background-color, text-color, border, shadow }
+textinput    { background-color, border, icon, placeholder, value, selection }
+slider       { rail, handle }
+checkbox     { background-color, icon, border, text-color }
+radio        { background-color, dot-color, border-width, border-color, text-color }
+menu         { background-color, border, text-color, selected:text-color, selected:background-color }
+menubox(     # multi-style widgets
+    <textinput>,
+    <menu>,
+)
+togglerlayer { background-color, worder-width, border-color }
+toggler(
+    <togglerlayer>,
+    <togglerlayer>,
+)
+text         { text-color }
+
+

@@ -34,6 +34,8 @@
 
           LIBCLANG_PATH =           "${pkgs.clang.passthru.cc.lib}/lib";
           RUST_SRC_PATH =           rustPlatform.rustLibSrc;
+
+          LIBCSS = "${netsurf.libcss}";
         };
       }
     );
